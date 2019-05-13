@@ -25,8 +25,8 @@ public class MapActivity extends AppCompatActivity {
     MapPOIItem porter;
 
     Random rand = new Random();
-    double lat = 37.59989898737013;
-    double lon = 126.86515864289788;
+    double lat = 37.61048704300967;
+    double lon = 126.85977828928299;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,8 +40,8 @@ public class MapActivity extends AppCompatActivity {
         createPorterMarker();
 
         //service
-        mapView.fitMapViewAreaToShowMapPoints(toArray(mapPoints));
-        mapView.setZoomLevel(mapView.getZoomLevel()+1, true);
+        mapView.setMapCenterPointAndZoomLevel(MapPoint.mapPointWithGeoCoord(lat, lon), 4, true);
+        //mapView.fitMapViewAreaToShowMapPoints(toArray(mapPoints));
         new Timer().schedule(timerTask, 0, 1500);
     }
 
@@ -69,7 +69,7 @@ public class MapActivity extends AppCompatActivity {
         store.setMarkerType(MapPOIItem.MarkerType.BluePin);
         store.setShowDisclosureButtonOnCalloutBalloon(false);
         mapView.addPOIItem(store);
-        mapView.selectPOIItem(store, true);
+        //mapView.selectPOIItem(store, true);
         mapPoints.add(storeMapPoint);
     }
 
@@ -82,7 +82,7 @@ public class MapActivity extends AppCompatActivity {
         dsite.setMarkerType(MapPOIItem.MarkerType.RedPin);
         dsite.setShowDisclosureButtonOnCalloutBalloon(false);
         mapView.addPOIItem(dsite);
-        mapView.selectPOIItem(dsite, true);
+        //mapView.selectPOIItem(dsite, true);
         mapPoints.add(dsiteMapPoint);
     }
 
@@ -96,16 +96,17 @@ public class MapActivity extends AppCompatActivity {
         porter.setCustomImageResourceId(R.drawable.porter);
         porter.setShowDisclosureButtonOnCalloutBalloon(false);
         mapView.addPOIItem(porter);
+        mapView.selectPOIItem(porter, true);
         mapPoints.add(porterMapPoint);
     }
 
     TimerTask timerTask = new TimerTask() {
         @Override
         public void run() {
-            lat += rand.nextInt(10) * (rand.nextBoolean()?1:1) * 0.00001;
-            lon += rand.nextInt(10) * (rand.nextBoolean()?1:1) * 0.00001;
+            lat -= 0.00005;
+            lon += 0.00005;
             porter.setMapPoint(MapPoint.mapPointWithGeoCoord(lat, lon));
-            porter.setRotation(rand.nextInt(360));
+            porter.setRotation(125);
         }
     };
 }
