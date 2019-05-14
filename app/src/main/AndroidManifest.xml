@@ -15,11 +15,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".map.activity.ObservableActivity"></activity>
+        <activity android:name=".gps.activity.GpsActivity" />
+        <activity android:name=".map.activity.ObserverActivity" />
         <activity
-            android:name=".IntroActivity"
-            android:theme="@style/AppTheme.FullScreen"></activity>
-        <activity android:name=".MainActivity">
+            android:name=".intro.activity.IntroActivity"
+            android:theme="@style/AppTheme.FullScreen" />
+        <activity android:name=".main.activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

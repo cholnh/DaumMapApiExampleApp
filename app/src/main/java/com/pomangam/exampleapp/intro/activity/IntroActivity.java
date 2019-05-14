@@ -1,10 +1,13 @@
-package com.pomangam.exampleapp;
+package com.pomangam.exampleapp.intro.activity;
 
 import android.content.Intent;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.WindowManager;
+
+import com.pomangam.exampleapp.R;
+import com.pomangam.exampleapp.main.activity.MainActivity;
 
 public class IntroActivity extends AppCompatActivity {
 

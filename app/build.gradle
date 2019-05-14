@@ -10,9 +10,11 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\choln\\Desktop\\ExampleApp\\keystore.jks') // 기준은 App 폴더 기준이다.
+            storeFile file('C:\\Users\\choln\\Desktop\\ExampleApp\\keystore.jks')
+            // 기준은 App 폴더 기준이다.
             storePassword "eun*zzi92!"
             keyAlias "key0"
             keyPassword "eun*zzi92!"
@@ -39,4 +41,9 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     compile files('libs/libDaumMapAndroid.jar')
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.google.code.gson:gson:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compileOnly 'org.projectlombok:lombok:1.18.8'
+    annotationProcessor 'org.projectlombok:lombok:1.18.8'
 }
