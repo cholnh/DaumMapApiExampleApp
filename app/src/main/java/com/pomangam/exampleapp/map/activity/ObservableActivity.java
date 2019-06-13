@@ -11,7 +11,6 @@ import com.pomangam.exampleapp.common.api.RestService;
 import com.pomangam.exampleapp.map.domain.MapDto;
 import com.pomangam.exampleapp.map.service.MapService;
 
-import net.daum.mf.map.api.MapPoint;
 import net.daum.mf.map.api.MapView;
 
 import retrofit2.Call;
@@ -121,7 +120,6 @@ public class ObservableActivity extends AppCompatActivity {
         private static final int MESSAGE_TIMER_STOP = 102;
         private static final int MESSAGE_TIMER_DELAY_MILLIS = 1500;
 
-        private int count = 0;
         private Exec exec;
 
         public TimerHandler(Exec exec) {
@@ -141,7 +139,6 @@ public class ObservableActivity extends AppCompatActivity {
             switch (msg.what) {
                 case MESSAGE_TIMER_START :
                     // 초기화
-                    count = 0;
                     this.removeMessages(MESSAGE_TIMER_REPEAT);
                     this.sendEmptyMessage(MESSAGE_TIMER_REPEAT);
                     break;

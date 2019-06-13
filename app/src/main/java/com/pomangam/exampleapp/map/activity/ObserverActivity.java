@@ -137,14 +137,14 @@ public class ObserverActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     MapDto dto = (MapDto) response.body();
 
-                    Toast.makeText(getApplicationContext(),
-                            dto+" " + cnt++ + " " + dto.getState() + " " + isPause,
-                            Toast.LENGTH_SHORT).show();
-
                     assert dto != null;
                     double lat = dto.getLatitude();
                     double lon = dto.getLongitude();
                     if(isPause || isSamePrev(lat, lon)) return;
+
+                    Toast.makeText(getApplicationContext(),
+                            dto+" " + cnt++ + " " + dto.getState() + " " + isPause,
+                            Toast.LENGTH_SHORT).show();
 
                     if(isFirst) {
                         mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(lat, lon), true);
@@ -175,10 +175,8 @@ public class ObserverActivity extends AppCompatActivity {
 
     private boolean isSamePrev(double lat, double lon) {
         if(lat == prevLat && lon == prevLon) {
-            System.out.println("same");
             return true;
         } else {
-            System.out.println("diff");
             prevLat = lat;
             prevLon = lon;
             return false;
